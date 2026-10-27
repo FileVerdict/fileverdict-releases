@@ -9,13 +9,14 @@
 
 <p align="center">
   Review and clean up the audio and subtitle tracks in your video files,<br>
-  rename them the way Plex and Jellyfin expect, and compress them, all in one desktop app.
+  rename them the way Plex and Jellyfin expect, and compress them, on your desktop or your home server.
 </p>
 
 <p align="center">
   <a href="https://github.com/FileVerdict/fileverdict-releases/releases/latest"><img src="https://img.shields.io/github/v/release/FileVerdict/fileverdict-releases?label=latest&color=5B5BD6&style=flat-square" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-5B5BD6?style=flat-square" alt="Windows 10 and 11">
   <img src="https://img.shields.io/badge/Linux-AppImage-5B5BD6?style=flat-square" alt="Linux AppImage">
+  <img src="https://img.shields.io/badge/Docker-ghcr.io-5B5BD6?style=flat-square" alt="Docker image">
   <img src="https://img.shields.io/badge/price-free%20%2B%20Pro-5B5BD6?style=flat-square" alt="Free, with an optional Pro plan">
 </p>
 
@@ -36,11 +37,12 @@ Get the newest version from the **[latest release](https://github.com/FileVerdic
 |---|---|---|
 | **Windows** 10 or 11, 64-bit | `File.Verdict_<version>_x64-setup.exe` | Run the installer. |
 | **Linux**, 64-bit Intel or AMD | `FileVerdict_<version>_amd64.AppImage` | Make it executable, then open it. Ubuntu 22.04, Debian 12, Fedora 36 or newer. |
+| **Docker**, for a home server or NAS, 64-bit Intel or AMD | `ghcr.io/fileverdict/fileverdict:latest` | Pull the image, map your folders, open it in a browser. See [Running it in Docker](https://fileverdict.com/docs/getting-started/docker/). |
 | macOS | | Planned. |
-| Headless / Docker | | Planned. |
 
-Once installed, FileVerdict checks this page for updates shortly after launch and installs them
-for you. Updates are signed, and the app refuses one that isn't.
+Once installed, the desktop app checks this page for updates shortly after launch and installs
+them for you. Updates are signed, and the app refuses one that isn't. The Docker image updates
+the Docker way: pull the new image (every release is tagged with its version and `latest`).
 Step-by-step setup is in the [installation guide](https://fileverdict.com/docs/getting-started/installation/).
 
 ## What it does
@@ -54,7 +56,8 @@ Step-by-step setup is in the [installation guide](https://fileverdict.com/docs/g
 - **Queue.** Runs the jobs one after another while you get on with something else.
 - **Tools.** Subtitle sync, converting image subtitles to text, and a library health check.
 
-ffmpeg, MKVToolNix and Tesseract ship inside the download, so there is nothing else to install.
+ffmpeg, MKVToolNix and Tesseract ship inside the download and the Docker image, so there is
+nothing else to install.
 
 ## Free and Pro
 
@@ -70,7 +73,8 @@ Besides the installer and the AppImage, each release carries:
 |---|---|
 | `*.sig`, `latest.json` | Update signatures and the update manifest the app reads. |
 | `SHA256SUMS.txt`, `SHA256SUMS-linux.txt` | SHA-256 checksums of the Windows installer and the Linux AppImage. |
-| `*-source.tar.*`, `*-library-sources.tar` | Source code of the bundled open-source tools (ffmpeg, MKVToolNix and their libraries), as their GPL and LGPL licences require. |
+| `*-source.tar.*`, `*-library-sources.tar` | Source code of the bundled open-source tools (ffmpeg, MKVToolNix and their libraries), as their GPL and LGPL licences require. The Docker image runs the same tool files as the AppImage, so these cover it too. |
+| `linux-docker-debian-12-base-sources.tar` | Source code of the Debian 12 system the Docker image runs on, every package at the version in the image. |
 
 To check a download on Linux:
 
